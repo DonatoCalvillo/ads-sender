@@ -15,10 +15,10 @@ async function bootstrap() {
 
   customLogger();
   customLogger('ADS SENDER API');
-  customLogger(`PORT: `);
+  customLogger(`PORT: ${process.env.PORT}`);
   customLogger();
 
-  await app.listen(3000);
+  await app.listen(`${process.env.PORT}`);
 
   customLogger();
   customLogger('LOGS');
