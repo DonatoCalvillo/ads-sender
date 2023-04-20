@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { AfterInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -20,12 +20,17 @@ export class User {
   @Column('boolean', { default: 1 })
   active: boolean;
 
-  @Column('timestamp', { default: null })
-  created_at: Date;
+  @Column('bigint', { default: new Date().getTime() })
+  created_at: number;
 
-  @Column('timestamp', { default: null })
-  modify_at: Date;
+  @Column('bigint', { default: new Date().getTime() })
+  modify_at: number;
 
-  @Column('timestamp with time zone', { default: null })
-  eliminated_at: Date;
+  @Column('bigint', { default: null })
+  eliminated_at: number;
+
+  @AfterInsert()
+  insertCreatedDate() {
+    this.created_at = new Date().getTime();
+  }
 }
