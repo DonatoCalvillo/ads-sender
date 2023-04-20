@@ -94,7 +94,7 @@ export class UserService {
 
       const response: IResponse = {
         success: false,
-        message: 'Internal server error, revisar los logs del API.',
+        message: 'Internal server error, verify API logs.',
         data: {},
         error_code: code,
       };
